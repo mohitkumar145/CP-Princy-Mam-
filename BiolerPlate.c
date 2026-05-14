@@ -1,44 +1,36 @@
-
 #include <stdio.h>
-int main() {
-    
-    return 0;
-}
 
+int main()
+{
+    int n;
+    int isPrime = 1; // 1 = true, 0 = false
 
-#include <stdio.h>
-int main() {
-    int n, temp, rem, sum = 0, digits = 0, i;
-    
-    printf("Enter Number: ");
+    printf("Enter the value of n: ");
     scanf("%d", &n);
 
-    temp = n;
-
-    // count digits
-    while(temp != 0) {
-        digits++;
-        temp /= 10;
+    if (n <= 1)
+    {
+        printf("Not a prime number");
+        return 0;
     }
 
-    temp = n;
-
-    // calculate sum
-    while(temp != 0) {
-        rem = temp % 10;
-
-        int power = 1;
-        for(i = 1; i <= digits; i++)
-            power *= rem;
-
-        sum += power;
-        temp /= 10;
+    for (int i = 2; i * i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            isPrime = 0;
+            break;
+        }
     }
 
-    if(sum == n)
-        printf("%d is Armstrong", n);
+    if (isPrime == 1)
+    {
+        printf("%d is a prime number", n);
+    }
     else
-        printf("%d is Not Armstrong", n);
+    {
+        printf("%d is not a prime number", n);
+    }
 
     return 0;
 }
